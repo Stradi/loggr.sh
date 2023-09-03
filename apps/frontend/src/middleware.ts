@@ -4,7 +4,7 @@ import pocketBaseMiddleware from './lib/middleware/pocket-base-middleware';
 import { chain } from './lib/middleware/utils';
 
 export default async function middleware(req: NextRequest, event: NextFetchEvent) {
-  return chain(req, event, [pocketBaseMiddleware]);
+  return chain(req, event, [pocketBaseMiddleware()]);
 }
 
 /*
