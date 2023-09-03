@@ -77,10 +77,10 @@ export default function BottomNavigation() {
   return (
     <nav className="relative border-b border-neutral-300">
       <div
-        className="absolute -bottom-0.5 h-0.5 bg-neutral-950 rounded-full transition-[left,width] duration-300"
+        className="pointer-events-none absolute top-0 w-full h-full -z-10 shadow-inner bg-neutral-200/50 rounded-lg transition-[left,width] duration-200"
         style={{
-          left: indicatorLeft - (indicatorWidth * 0.75) / 2,
-          width: indicatorWidth * 0.75,
+          left: indicatorLeft - indicatorWidth / 2,
+          width: indicatorWidth,
         }}
       />
 
