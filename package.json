@@ -1,0 +1,11 @@
+{
+  "name": "changelog",
+  "description": "Changelog app",
+  "version": "0.0.0",
+  "author": "Batın Evirgen <hello@batin.sh> (https://www.batin.sh)",
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/Stradi/changelog.git"
+  },
+  "private": true
+}
