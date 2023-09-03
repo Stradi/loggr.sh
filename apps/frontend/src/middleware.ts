@@ -1,11 +1,10 @@
-import { NextFetchEvent, NextRequest } from "next/server"
-import { chain } from "./lib/middleware/utils"
-import pocketBaseMiddleware from "./lib/middleware/pocket-base-middleware"
+import { NextFetchEvent, NextRequest } from 'next/server';
+
+import pocketBaseMiddleware from './lib/middleware/pocket-base-middleware';
+import { chain } from './lib/middleware/utils';
 
 export default async function middleware(req: NextRequest, event: NextFetchEvent) {
-  return chain(
-    req, event, [pocketBaseMiddleware]
-  )
+  return chain(req, event, [pocketBaseMiddleware]);
 }
 
 /*
@@ -19,7 +18,5 @@ export default async function middleware(req: NextRequest, event: NextFetchEvent
  * 7. /robots.txt  -> robots.txt
  */
 export const config = {
-  matcher: [
-    "/((?!api/|_next|_static|_vercel|favicon.ico|sitemap.xml|robots.txt).*)"
-  ]
-}
+  matcher: ['/((?!api/|_next|_static|_vercel|favicon.ico|sitemap.xml|robots.txt).*)'],
+};

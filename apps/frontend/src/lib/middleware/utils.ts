@@ -1,6 +1,10 @@
-import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
+import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
 
-export type ChainableMiddleware = (request: NextRequest, response: NextResponse, event: NextFetchEvent) => Promise<void | NextResponse>;
+export type ChainableMiddleware = (
+  request: NextRequest,
+  response: NextResponse,
+  event: NextFetchEvent
+) => Promise<void | NextResponse>;
 export async function chain(request: NextRequest, event: NextFetchEvent, middlewares: ChainableMiddleware[]) {
   const response = NextResponse.next();
 
