@@ -7,7 +7,7 @@ export default function Layout({ children }: Props) {
   return (
     <Container>
       <DashboardNavigation />
-      {children}
+      <main className="p-4">{children}</main>
     </Container>
   );
 }
