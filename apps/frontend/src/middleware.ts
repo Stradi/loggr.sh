@@ -1,16 +1,16 @@
 import { NextFetchEvent, NextRequest } from 'next/server';
 
-import emailVerifiedMiddleware from './lib/middleware/email-verified-middleware';
+// import emailVerifiedMiddleware from './lib/middleware/email-verified-middleware';
 import pocketBaseMiddleware from './lib/middleware/pocket-base-middleware';
 import { chain } from './lib/middleware/utils';
 
 export default async function middleware(req: NextRequest, event: NextFetchEvent) {
   return chain(req, event, [
     pocketBaseMiddleware(),
-    emailVerifiedMiddleware({
-      whenVisited: ['/dashboard'],
-      redirectUrl: '/auth/verify-email',
-    }),
+    // emailVerifiedMiddleware({
+    //   whenVisited: ['/dashboard'],
+    //   redirectUrl: '/auth/verify-email',
+    // }),
   ]);
 }
 
