@@ -97,7 +97,13 @@ export default function SignUpForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="jon@snow.com" disabled={isSubmitting} {...field} />
+                <Input
+                  type="email"
+                  placeholder="jon@snow.com"
+                  disabled={isSubmitting}
+                  autoComplete="email"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -110,7 +116,13 @@ export default function SignUpForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="*********" disabled={isSubmitting} {...field} />
+                <Input
+                  type="password"
+                  placeholder="*********"
+                  disabled={isSubmitting}
+                  autoComplete="new-password"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -123,7 +135,13 @@ export default function SignUpForm() {
             <FormItem>
               <FormLabel>Confirm Your Password</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="*********" disabled={isSubmitting} {...field} />
+                <Input
+                  type="password"
+                  placeholder="*********"
+                  disabled={isSubmitting}
+                  autoComplete="new-password"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
