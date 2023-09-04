@@ -136,6 +136,7 @@ export default function CreateProductForm({ onCreate }: Props) {
             </FormItem>
           )}
         />
+        {form.formState.errors.root && <FormMessage>{form.formState.errors.root.message}</FormMessage>}
         <Button type="submit" disabled={isSubmitting}>
           Create
         </Button>
