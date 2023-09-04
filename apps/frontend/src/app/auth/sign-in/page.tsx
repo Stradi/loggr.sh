@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import createServerComponentClient from '@/lib/pocket-base/client-server-component-client';
+import createServerComponentClient from '@/lib/pocket-base/create-server-component-client';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import SignInForm from './sign-in-form';
