@@ -1,4 +1,4 @@
-import ProductSelector from './product-selector';
+import ProductSelector from '../product-selector';
 import UserMenu from './user-menu';
 
 export default function TopNavigation() {

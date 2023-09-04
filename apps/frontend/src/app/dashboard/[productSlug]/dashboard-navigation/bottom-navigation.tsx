@@ -1,56 +1,58 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { MouseEvent, RefObject, createRef, useEffect, useState } from 'react';
+import { MouseEvent, RefObject, createRef, useEffect, useMemo, useState } from 'react';
 import DashboardNavigationItem from './navigation-item';
 
-// TODO: We should probably change hrefs into something like this:
-// `/dashboard/{PRODUCT_NAME}/changelogs`
-// `/dashboard/{PRODUCT_NAME}/feedbacks`
-// ...
-// To do that, we probably need to move Items variable inside the BottomNavigation component.
-// This is because, the user can have multiple products, and we need to know which product the user is currently viewing.
-// We will use `/dashboard/settings` (other pages) for user's account settings and so on...
-
-const Items: { label: string; href: string; ref: RefObject<HTMLAnchorElement> }[] = [
-  {
-    label: 'Overview',
-    href: '/dashboard',
-    ref: createRef<HTMLAnchorElement>(),
-  },
-  {
-    label: 'Changelogs',
-    href: '/dashboard/changelogs',
-    ref: createRef<HTMLAnchorElement>(),
-  },
-  {
-    label: 'Feedbacks',
-    href: '/dashboard/feedbacks',
-    ref: createRef<HTMLAnchorElement>(),
-  },
-  {
-    label: 'Ideas',
-    href: '/dashboard/ideas',
-    ref: createRef<HTMLAnchorElement>(),
-  },
-  {
-    label: 'Roadmap',
-    href: '/dashboard/roadmap',
-    ref: createRef<HTMLAnchorElement>(),
-  },
-  {
-    label: 'Settings',
-    href: '/dashboard/settings',
-    ref: createRef<HTMLAnchorElement>(),
-  },
-];
+const Items: (productName: string) => { label: string; href: string; ref: RefObject<HTMLAnchorElement> }[] = (
+  productName
+) => {
+  return [
+    {
+      label: 'Overview',
+      href: `/dashboard/${productName}`,
+      ref: createRef<HTMLAnchorElement>(),
+    },
+    {
+      label: 'Changelogs',
+      href: `/dashboard/${productName}/changelogs`,
+      ref: createRef<HTMLAnchorElement>(),
+    },
+    {
+      label: 'Feedbacks',
+      href: `/dashboard/${productName}/feedbacks`,
+      ref: createRef<HTMLAnchorElement>(),
+    },
+    {
+      label: 'Ideas',
+      href: `/dashboard/${productName}/ideas`,
+      ref: createRef<HTMLAnchorElement>(),
+    },
+    {
+      label: 'Roadmap',
+      href: `/dashboard/${productName}/roadmap`,
+      ref: createRef<HTMLAnchorElement>(),
+    },
+    {
+      label: 'Settings',
+      href: `/dashboard/${productName}/settings`,
+      ref: createRef<HTMLAnchorElement>(),
+    },
+  ];
+};
 
 export default function BottomNavigation() {
   const [indicatorLeft, setIndicatorLeft] = useState(0);
   const [indicatorWidth, setIndicatorWidth] = useState(0);
 
   const pathname = usePathname();
-  const activeItem = Items.find((item) => item.href === pathname);
+  const productName = pathname.split('/')[2];
+
+  const cachedItems = useMemo(() => {
+    return Items(productName);
+  }, [productName]);
+
+  const activeItem = cachedItems.find((item) => pathname === item.href);
 
   function onMouseEnter(e: MouseEvent<HTMLAnchorElement>) {
     const target = e.target as HTMLAnchorElement;
@@ -86,7 +88,7 @@ export default function BottomNavigation() {
 
       <div className="flex justify-between items-center">
         <ul className="flex group/all [&>*]:px-4 [&>*]:py-2" onMouseLeave={moveIndicatorToActiveItem}>
-          {Items.map((item, index) => (
+          {cachedItems.map((item, index) => (
             <DashboardNavigationItem
               key={index}
               ref={item.ref}

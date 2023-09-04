@@ -1,4 +1,4 @@
-import createServerComponentClient from '@/lib/pocket-base/client-server-component-client';
+import createServerComponentClient from '@/lib/pocket-base/create-server-component-client';
 import { redirect } from 'next/navigation';
 
 export default async function Dashboard() {
@@ -9,7 +9,7 @@ export default async function Dashboard() {
 
   return (
     <>
-      <p>Welcome to the dashboard!</p>
+      <p>Select a product first</p>
     </>
   );
 }

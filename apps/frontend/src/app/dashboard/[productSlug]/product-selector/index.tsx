@@ -1,15 +1,14 @@
-'use client';
-
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils/tailwind';
-import { ChevronsDownUpIcon, ChevronsUpDownIcon } from 'lucide-react';
-import { useState } from 'react';
+import { ChevronsUpDownIcon } from 'lucide-react';
+import { getSelectedProduct } from '../selected-product-context';
+import Content from './content';
 
 export default function ProductSelector() {
-  const [isOpen, setIsOpen] = useState(false);
+  const selectedProduct = getSelectedProduct();
 
   return (
-    <Popover onOpenChange={setIsOpen} open={isOpen}>
+    <Popover>
       <PopoverTrigger
         className={cn(
           'flex gap-2 items-center py-1 px-1.5 rounded-lg text-neutral-900',
@@ -19,10 +18,12 @@ export default function ProductSelector() {
         )}
       >
         <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full" />
-        <span className="text-sm font-medium">Product Name</span>
-        {isOpen ? <ChevronsDownUpIcon size={16} /> : <ChevronsUpDownIcon size={16} />}
+        <span className="font-medium text-sm">{selectedProduct.name}</span>
+        <ChevronsUpDownIcon size={16} />
       </PopoverTrigger>
-      <PopoverContent>TODO</PopoverContent>
+      <PopoverContent className="w-60 flex max-h-72">
+        <Content />
+      </PopoverContent>
     </Popover>
   );
 }
