@@ -5,6 +5,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import usePocketBase from '@/hooks/usePocketBase';
+import { Product } from '@/types/pb';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -66,7 +67,7 @@ export default function CreateProductForm({ onCreate }: Props) {
 
     const record = await pb
       ?.collection('products')
-      .create({
+      .create<Product>({
         name: data.name,
         slug: slugify(data.name, {
           lower: true,

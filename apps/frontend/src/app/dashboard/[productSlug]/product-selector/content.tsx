@@ -1,5 +1,6 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import createServerComponentClient from '@/lib/pocket-base/create-server-component-client';
+import { Product } from '@/types/pb';
 import { getSelectedProduct } from '../selected-product-context';
 import CreateProductDialog from './create-product-dialog';
 import SingleProduct from './single-product';
@@ -8,7 +9,7 @@ async function getProductsOfUser() {
   const pb = await createServerComponentClient();
   const user = pb.authStore.model;
 
-  const products = await pb.collection('products').getList(1, 10, {
+  const products = await pb.collection('products').getList<Product>(1, 10, {
     filter: `admin_user.id = "${user?.id}"`,
   });
 
@@ -28,8 +29,8 @@ export default async function Content() {
       </header>
       <ScrollArea className="grow">
         <ul className="space-y-1">
-          {products.items.map((product: any) => (
-            <SingleProduct key={product.id} product={product} isActive={product.slug === selectedProduct.slug} />
+          {products.items.map((product) => (
+            <SingleProduct key={product.id} product={product} isActive={product.slug === selectedProduct?.slug} />
           ))}
         </ul>
         {products.items.length === 0 && (

@@ -1,5 +1,6 @@
 import Container from '@/components/ui/container';
 import createServerComponentClient from '@/lib/pocket-base/create-server-component-client';
+import { Product } from '@/types/pb';
 import { notFound } from 'next/navigation';
 import { PropsWithChildren } from 'react';
 import DashboardNavigation from './dashboard-navigation';
@@ -15,7 +16,7 @@ async function fetchProduct(slug: string) {
   const pb = await createServerComponentClient();
   const record = await pb
     .collection('products')
-    .getFirstListItem(`admin_user.id = "${pb.authStore.model?.id}" && slug = "${slug}"`)
+    .getFirstListItem<Product>(`admin_user.id = "${pb.authStore.model?.id}" && slug = "${slug}"`)
     .catch(() => null);
 
   if (!record) {

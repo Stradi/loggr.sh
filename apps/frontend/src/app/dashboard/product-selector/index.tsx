@@ -1,4 +1,5 @@
 import createServerComponentClient from '@/lib/pocket-base/create-server-component-client';
+import { Product } from '@/types/pb';
 import CreateProductDialog from './create-product-dialog';
 import SingleProduct from './single-product';
 
@@ -7,7 +8,7 @@ async function getAvailableProducts() {
 
   const records = await pb
     .collection('products')
-    .getFullList()
+    .getFullList<Product>()
     .catch(() => []);
 
   if (!records) return [];

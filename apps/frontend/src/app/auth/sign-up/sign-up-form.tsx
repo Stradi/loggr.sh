@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import usePocketBase from '@/hooks/usePocketBase';
+import { Account } from '@/types/pb';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { ClientResponseError } from 'pocketbase';
@@ -48,7 +49,7 @@ export default function SignUpForm() {
     setIsSubmitting(true);
     const createAccountResponse = await pb
       ?.collection('users')
-      .create({
+      .create<Account>({
         email: data.email,
         password: data.password,
         passwordConfirm: data.passwordConfirm,
