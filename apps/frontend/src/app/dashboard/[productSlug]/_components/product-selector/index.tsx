@@ -1,7 +1,7 @@
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils/tailwind';
 import { ChevronsUpDownIcon } from 'lucide-react';
-import { getSelectedProduct } from '../selected-product-context';
+import { getSelectedProduct } from '../../selected-product-context';
 import Content from './content';
 
 export default function ProductSelector() {

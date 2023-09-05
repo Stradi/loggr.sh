@@ -1,7 +1,7 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import createServerComponentClient from '@/lib/pocket-base/create-server-component-client';
 import { Product } from '@/types/pb';
-import { getSelectedProduct } from '../selected-product-context';
+import { getSelectedProduct } from '../../selected-product-context';
 import CreateProductDialog from './create-product-dialog';
 import SingleProduct from './single-product';
 
