@@ -8,7 +8,9 @@ async function getAvailableProducts() {
 
   const records = await pb
     .collection('products')
-    .getFullList<Product>()
+    .getFullList<Product>({
+      filter: `admin_user.id = "${pb.authStore.model?.id}"`,
+    })
     .catch(() => []);
 
   if (!records) return [];
