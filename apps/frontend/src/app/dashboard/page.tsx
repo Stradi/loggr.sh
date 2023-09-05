@@ -1,6 +1,6 @@
 import createServerComponentClient from '@/lib/pocket-base/create-server-component-client';
 import { redirect } from 'next/navigation';
-import ProductSelector from './product-selector';
+import ProductSelector from './_components/product-selector';
 
 export default async function Dashboard() {
   const pb = await createServerComponentClient();

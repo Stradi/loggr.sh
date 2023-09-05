@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import createServerComponentClient from '@/lib/pocket-base/create-server-component-client';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import SignUpForm from './sign-up-form';
+import SignUpForm from './_components/sign-up-form';
 
 export default async function Page() {
   const pb = await createServerComponentClient();

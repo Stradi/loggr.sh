@@ -3,7 +3,7 @@ import createServerComponentClient from '@/lib/pocket-base/create-server-compone
 import { Product } from '@/types/pb';
 import { notFound } from 'next/navigation';
 import { PropsWithChildren } from 'react';
-import DashboardNavigation from './dashboard-navigation';
+import DashboardNavigation from './_components/dashboard-navigation';
 import { setSelectedProduct } from './selected-product-context';
 
 type Props = PropsWithChildren & {

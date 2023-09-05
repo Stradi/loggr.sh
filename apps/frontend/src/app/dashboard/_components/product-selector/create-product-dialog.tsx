@@ -12,7 +12,7 @@ import {
 import { PlusIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import CreateProductForm from './../[productSlug]/product-selector/create-product-form';
+import CreateProductForm from '../../[productSlug]/_components/product-selector/create-product-form';
 
 export default function CreateProductDialog() {
   const [isOpen, setIsOpen] = useState(false);
