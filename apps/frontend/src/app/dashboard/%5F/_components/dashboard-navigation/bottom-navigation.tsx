@@ -52,7 +52,9 @@ export default function BottomNavigation() {
     return Items(productName);
   }, [productName]);
 
-  const activeItem = cachedItems.find((item) => pathname === item.href);
+  // We are reversing the array because the first item (Overview) contains the most common path
+  // and `find` method will return Overview even if the path is `/dashboard/_/${productName}/changelogs/new`.
+  const activeItem = cachedItems.toReversed().find((item) => pathname.includes(item.href));
 
   function onMouseEnter(e: MouseEvent<HTMLAnchorElement>) {
     const target = e.target as HTMLAnchorElement;
