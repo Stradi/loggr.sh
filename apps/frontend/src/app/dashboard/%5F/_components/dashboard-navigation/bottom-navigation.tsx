@@ -10,32 +10,32 @@ const Items: (productName: string) => { label: string; href: string; ref: RefObj
   return [
     {
       label: 'Overview',
-      href: `/dashboard/${productName}`,
+      href: `/dashboard/_/${productName}`,
       ref: createRef<HTMLAnchorElement>(),
     },
     {
       label: 'Changelogs',
-      href: `/dashboard/${productName}/changelogs`,
+      href: `/dashboard/_/${productName}/changelogs`,
       ref: createRef<HTMLAnchorElement>(),
     },
     {
       label: 'Feedbacks',
-      href: `/dashboard/${productName}/feedbacks`,
+      href: `/dashboard/_/${productName}/feedbacks`,
       ref: createRef<HTMLAnchorElement>(),
     },
     {
       label: 'Ideas',
-      href: `/dashboard/${productName}/ideas`,
+      href: `/dashboard/_/${productName}/ideas`,
       ref: createRef<HTMLAnchorElement>(),
     },
     {
       label: 'Roadmap',
-      href: `/dashboard/${productName}/roadmap`,
+      href: `/dashboard/_/${productName}/roadmap`,
       ref: createRef<HTMLAnchorElement>(),
     },
     {
       label: 'Settings',
-      href: `/dashboard/${productName}/settings`,
+      href: `/dashboard/_/${productName}/settings`,
       ref: createRef<HTMLAnchorElement>(),
     },
   ];
@@ -46,7 +46,7 @@ export default function BottomNavigation() {
   const [indicatorWidth, setIndicatorWidth] = useState(0);
 
   const pathname = usePathname();
-  const productName = pathname.split('/')[2];
+  const productName = pathname.split('/')[3];
 
   const cachedItems = useMemo(() => {
     return Items(productName);
