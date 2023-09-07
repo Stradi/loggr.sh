@@ -1,13 +1,6 @@
-import createServerComponentClient from '@/lib/pocket-base/create-server-component-client';
-import { redirect } from 'next/navigation';
 import ProductSelector from './_components/product-selector';
 
 export default async function Dashboard() {
-  const pb = await createServerComponentClient();
-  if (!pb.authStore.isValid) {
-    return redirect('/auth/sign-in');
-  }
-
   return (
     <div className="h-screen flex flex-col items-center justify-center gap-8">
       <div>
