@@ -22,6 +22,9 @@ export default function MyEditor({
         type: 'title',
         content: [{ type: 'text', text: 'Title of my changelog' }],
       },
+      {
+        type: 'paragraph',
+      },
     ],
   },
   editable = true,

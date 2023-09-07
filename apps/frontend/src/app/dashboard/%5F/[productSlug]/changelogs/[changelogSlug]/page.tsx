@@ -34,7 +34,7 @@ export default async function Page(props: Props) {
   const isEditable = 'edit' in props.searchParams;
 
   return (
-    <main className="h-[87vh] [&>*]:space-y-2 [&>*]:h-full [&>*]:flex [&>*]:flex-col">
+    <main className="[&>*]:space-y-2 [&>*]:h-full [&>*]:flex [&>*]:flex-col">
       {changelog ? <ViewChangelogPage changelog={changelog} isEditable={isEditable} /> : <NewChangelogPage />}
     </main>
   );

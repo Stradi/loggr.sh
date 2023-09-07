@@ -6,7 +6,7 @@ import PublishSettings from './publish-settings';
 
 export default function Sidebar() {
   return (
-    <aside className="border rounded-lg border-neutral-100 p-4 h-full overflow-y-scroll">
+    <aside className="border rounded-lg border-neutral-100 p-4 h-full">
       <Accordion type="multiple">
         <AccordionItem value="publish-options">
           <AccordionTrigger>Publish Options</AccordionTrigger>

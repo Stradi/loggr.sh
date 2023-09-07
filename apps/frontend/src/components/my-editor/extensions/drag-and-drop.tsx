@@ -133,7 +133,7 @@ function DragHandle(options: DragHandleOptions) {
           }
 
           const node = nodeDOMAtCoords({
-            x: event.clientX + 50 + options.dragHandleWidth,
+            x: event.clientX + options.dragHandleWidth,
             y: event.clientY,
           });
 

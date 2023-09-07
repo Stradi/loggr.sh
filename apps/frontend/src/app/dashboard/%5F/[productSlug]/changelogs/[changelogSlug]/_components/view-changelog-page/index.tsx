@@ -15,7 +15,7 @@ export default function ViewChangelogPage({ changelog, isEditable = false }: Pro
         {isEditable ? <span>Save changes button</span> : <span>Edit this changelog button</span>}
       </div>
       <div className="grid grid-cols-3 gap-2 h-full grow">
-        <main className="col-span-2 border border-neutral-100 rounded-lg p-4 pl-8 h-full overflow-y-scroll">
+        <main className="col-span-2 border border-neutral-100 rounded-lg p-4 pl-8">
           <MyEditor defaultValue={changelog.content} editable={isEditable} />
         </main>
         <Sidebar />
