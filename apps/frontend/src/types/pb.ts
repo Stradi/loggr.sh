@@ -17,7 +17,7 @@ export type Product = Base & {
   short_description: string;
   website_url: string;
 
-  extend?: {
+  expand?: {
     admin_user?: Account;
   };
 };
@@ -30,7 +30,7 @@ export type Changelog = Base & {
   featured_image: string;
   tags: ('FIX' | 'ANNOUNCEMENT' | 'COMING_SOON' | 'IMPROVEMENT')[];
 
-  extend?: {
+  expand?: {
     product?: Product;
   };
 };

@@ -11,6 +11,7 @@ async function fetchChangelogs(productSlug: string) {
     .collection('changelogs')
     .getList<Changelog>(0, 10, {
       filter: `product.slug = "${productSlug}" && product.admin_user.id = "${pb.authStore.model?.id}"`,
+      expand: 'product',
     })
     .catch(() => null);
 

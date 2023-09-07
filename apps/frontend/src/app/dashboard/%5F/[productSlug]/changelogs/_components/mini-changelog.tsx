@@ -23,17 +23,17 @@ export default function MiniChangelog({ changelog }: Props) {
           {/* TODO: Some of these buttons are not links. For example delete button should open a alert dialog. */}
           <div>
             <Button asChild variant="ghost" size="icon" title="View this changelog">
-              <Link href={`/dashboard/_/${changelog.extend?.product?.slug}/changelogs/${changelog.slug}`}>
+              <Link href={`/dashboard/_/${changelog.expand?.product?.slug}/changelogs/${changelog.slug}`}>
                 <ExternalLinkIcon size={16} />
               </Link>
             </Button>
             <Button asChild variant="ghost" size="icon" title="Edit this changelog">
-              <Link href={`/dashboard/_/${changelog.extend?.product?.slug}/changelogs/${changelog.slug}/edit`}>
+              <Link href={`/dashboard/_/${changelog.expand?.product?.slug}/changelogs/${changelog.slug}/edit`}>
                 <FileEditIcon size={16} />
               </Link>
             </Button>
             <Button asChild variant="ghost" size="icon" title="Delete this changelog">
-              <Link href={`/dashboard/_/${changelog.extend?.product?.slug}/changelogs/${changelog.slug}/delete`}>
+              <Link href={`/dashboard/_/${changelog.expand?.product?.slug}/changelogs/${changelog.slug}/delete`}>
                 <TrashIcon size={16} />
               </Link>
             </Button>
@@ -43,7 +43,7 @@ export default function MiniChangelog({ changelog }: Props) {
         <main>
           <Link
             as="h2"
-            href={`/dashboard/_/${changelog.extend?.product?.slug}/changelogs/${changelog.slug}/edit`}
+            href={`/dashboard/_/${changelog.expand?.product?.slug}/changelogs/${changelog.slug}/edit`}
             className="text-xl font-medium hover:underline"
           >
             {changelog.name}
