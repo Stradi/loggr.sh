@@ -1,18 +1,23 @@
-.ProseMirror {
-  @apply p-12 px-8 sm:px-12;
-}
-
 .ProseMirror .is-editor-empty:first-child::before {
   content: attr(data-placeholder);
   float: left;
-  color: var(--novel-stone-400);
+  color: #a3a3a3;
   pointer-events: none;
   height: 0;
 }
-.ProseMirror .is-empty::before {
+
+.ProseMirror p.is-empty:last-child::before {
   content: attr(data-placeholder);
   float: left;
-  color: var(--novel-stone-400);
+  color: #a3a3a3;
+  pointer-events: none;
+  height: 0;
+}
+
+.ProseMirror :not(p).is-empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #a3a3a3;
   pointer-events: none;
   height: 0;
 }
@@ -45,8 +50,8 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    border: 3px solid var(--novel-stone-200);
-    border-top-color: var(--novel-stone-800);
+    border: 3px solid #e5e5e5;
+    border-top-color: #262626;
     animation: spinning 0.6s linear infinite;
   }
 }
@@ -73,24 +78,24 @@ ul[data-type='taskList'] li > label {
 ul[data-type='taskList'] li > label input[type='checkbox'] {
   -webkit-appearance: none;
   appearance: none;
-  background-color: var(--novel-white);
+  background-color: #ffffff;
   margin: 0;
   cursor: pointer;
   width: 1.2em;
   height: 1.2em;
   position: relative;
   top: 5px;
-  border: 2px solid var(--novel-stone-900);
+  border: 2px solid #171717;
   margin-right: 0.3rem;
   display: grid;
   place-content: center;
 
   &:hover {
-    background-color: var(--novel-stone-50);
+    background-color: #fafafa;
   }
 
   &:active {
-    background-color: var(--novel-stone-200);
+    background-color: #e5e5e5;
   }
 
   &::before {
@@ -110,7 +115,7 @@ ul[data-type='taskList'] li > label input[type='checkbox'] {
 }
 
 ul[data-type='taskList'] li[data-checked='true'] > div > p {
-  color: var(--novel-stone-400);
+  color: #a3a3a3;
   text-decoration: line-through;
   text-decoration-thickness: 2px;
 }
@@ -124,7 +129,7 @@ ul[data-type='taskList'] li[data-checked='true'] > div > p {
 .ProseMirror:not(.dragging) .ProseMirror-selectednode {
   outline: none !important;
   border-radius: 0.2rem;
-  background-color: var(--novel-highlight-blue);
+  background-color: #7dd3fc;
   transition: background-color 0.2s;
   box-shadow: none;
 }
@@ -145,12 +150,12 @@ ul[data-type='taskList'] li[data-checked='true'] > div > p {
   cursor: grab;
 
   &:hover {
-    background-color: var(--novel-stone-100);
+    background-color: #f5f5f5;
     transition: background-color 0.2s;
   }
 
   &:active {
-    background-color: var(--novel-stone-200);
+    background-color: #e5e5e5;
     transition: background-color 0.2s;
   }
 

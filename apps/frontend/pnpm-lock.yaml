@@ -35,6 +35,9 @@ dependencies:
   '@tiptap/extension-document':
     specifier: ^2.1.8
     version: 2.1.8(@tiptap/core@2.1.8)
+  '@tiptap/extension-heading':
+    specifier: ^2.1.8
+    version: 2.1.8(@tiptap/core@2.1.8)
   '@tiptap/extension-highlight':
     specifier: ^2.1.8
     version: 2.1.8(@tiptap/core@2.1.8)

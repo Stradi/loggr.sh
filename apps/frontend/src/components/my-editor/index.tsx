@@ -7,19 +7,17 @@ import { EditorBubbleMenu } from './bubble-menu';
 import { defaultExtensions } from './extensions';
 import { defaultEditorProps } from './props';
 
-import './styles/index.css';
-
 type Props = {
   debounceDuration?: number;
 };
+
 export default function MyEditor({ debounceDuration = 1000 }: Props) {
   const [content, setContent] = useState<any>({
     type: 'doc',
     content: [
       {
-        type: 'heading',
-        attrs: { level: 1 },
-        content: [{ type: 'text', text: 'Hello, world!' }],
+        type: 'title',
+        content: [{ type: 'text', text: 'Title of my changelog' }],
       },
     ],
   });

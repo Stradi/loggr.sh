@@ -16,6 +16,7 @@ import SlashCommand from './slash-command';
 import CustomDocument from './custom-document';
 import CustomKeymap from './custom-keymap';
 import DragAndDrop from './drag-and-drop';
+import TitleNode from './title-node';
 import UpdatedImage from './updated-image';
 
 export const defaultExtensions = [
@@ -102,11 +103,14 @@ export const defaultExtensions = [
     },
   }),
   Placeholder.configure({
+    showOnlyCurrent: false,
     placeholder: ({ node }) => {
-      if (node.type.name === 'heading') {
+      if (node.type.name === 'title') {
+        return `What is the name of your changelog?`;
+      } else if (node.type.name === 'heading') {
         return `Heading ${node.attrs.level}`;
       }
-      return "Press '/' for commands, or '++' for AI autocomplete...";
+      return "Press '/' for commands or just start typing...";
     },
     includeChildren: true,
   }),
@@ -135,4 +139,5 @@ export const defaultExtensions = [
   CustomKeymap,
   DragAndDrop,
   CustomDocument,
+  TitleNode,
 ];

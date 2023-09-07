@@ -71,7 +71,7 @@ function getSuggestionItems({ query }: { query: string }) {
     {
       title: 'Heading 2',
       description: 'Medium section heading.',
-      searchTerms: ['subtitle', 'medium'],
+      searchTerms: ['subtitle', 'medium', 'h2'],
       icon: <Heading2Icon size={18} />,
       command: ({ editor, range }: CommandProps) => {
         editor.chain().focus().deleteRange(range).setNode('heading', { level: 2 }).run();
@@ -80,7 +80,7 @@ function getSuggestionItems({ query }: { query: string }) {
     {
       title: 'Heading 3',
       description: 'Small section heading.',
-      searchTerms: ['subtitle', 'small'],
+      searchTerms: ['subtitle', 'small', 'h3'],
       icon: <Heading3Icon size={18} />,
       command: ({ editor, range }: CommandProps) => {
         editor.chain().focus().deleteRange(range).setNode('heading', { level: 3 }).run();
