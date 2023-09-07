@@ -1,12 +1,9 @@
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils/tailwind';
-import { ChevronsUpDownIcon } from 'lucide-react';
-import { getSelectedProduct } from '../../selected-product-context';
 import Content from './content';
+import PopoverTriggerContent from './popover-trigger-content';
 
 export default function ProductSelector() {
-  const selectedProduct = getSelectedProduct();
-
   return (
     <Popover>
       <PopoverTrigger
@@ -17,9 +14,7 @@ export default function ProductSelector() {
           "data-[state='open']:bg-neutral-200/50 data-[state='open']:shadow-inner"
         )}
       >
-        <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full" />
-        <span className="font-medium text-sm">{selectedProduct.name}</span>
-        <ChevronsUpDownIcon size={16} />
+        <PopoverTriggerContent />
       </PopoverTrigger>
       <PopoverContent className="w-60 flex max-h-72">
         <Content />

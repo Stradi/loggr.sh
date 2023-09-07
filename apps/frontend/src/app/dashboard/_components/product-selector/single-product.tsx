@@ -13,7 +13,7 @@ export default function SingleProduct({ product }: Props) {
       className="items-start flex-col w-64 p-4 gap-4 h-auto relative group"
       title={product.name}
     >
-      <Link href={`/dashboard/${product.slug}`}>
+      <Link href={`/dashboard/_/${product.slug}`}>
         <div className="flex items-center w-[90%]">
           <div className="w-10 h-10 rounded-full mr-2 bg-gradient-to-br from-green-400 to-green-500 shrink-0" />
           <div className="min-w-0">

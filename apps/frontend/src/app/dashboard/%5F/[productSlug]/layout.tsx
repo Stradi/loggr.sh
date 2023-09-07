@@ -3,8 +3,8 @@ import createServerComponentClient from '@/lib/pocket-base/create-server-compone
 import { Product } from '@/types/pb';
 import { notFound } from 'next/navigation';
 import { PropsWithChildren } from 'react';
-import DashboardNavigation from './_components/dashboard-navigation';
-import { setSelectedProduct } from './selected-product-context';
+import DashboardNavigation from '../_components/dashboard-navigation';
+import { SelectedProductProvider } from '../_contexts/selected-product-context';
 
 type Props = PropsWithChildren & {
   params: {
@@ -17,7 +17,10 @@ async function fetchProduct(slug: string) {
   const record = await pb
     .collection('products')
     .getFirstListItem<Product>(`admin_user.id = "${pb.authStore.model?.id}" && slug = "${slug}"`)
-    .catch(() => null);
+    .catch((e) => {
+      console.log(e);
+      return null;
+    });
 
   if (!record) {
     return notFound();
@@ -28,12 +31,17 @@ async function fetchProduct(slug: string) {
 
 export default async function Layout({ children, params: { productSlug } }: Props) {
   const product = await fetchProduct(productSlug);
-  setSelectedProduct(product);
 
   return (
     <Container>
-      <DashboardNavigation />
-      <main className="p-4">{children}</main>
+      <SelectedProductProvider
+        defaultValues={{
+          product,
+        }}
+      >
+        <DashboardNavigation />
+        <main className="p-4 max-w-3xl">{children}</main>
+      </SelectedProductProvider>
     </Container>
   );
 }
