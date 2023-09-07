@@ -15,6 +15,7 @@ import SlashCommand from './slash-command';
 // import UploadImagesPlugin from "@/ui/editor/plugins/upload-images";
 import CustomDocument from './custom-document';
 import CustomKeymap from './custom-keymap';
+import DescriptionNode from './description-node';
 import DragAndDrop from './drag-and-drop';
 import TitleNode from './title-node';
 import UpdatedImage from './updated-image';
@@ -103,16 +104,18 @@ export const defaultExtensions = [
     },
   }),
   Placeholder.configure({
-    showOnlyCurrent: false,
     placeholder: ({ node }) => {
       if (node.type.name === 'title') {
         return `What is the name of your changelog?`;
+      } else if (node.type.name === 'description') {
+        return `What is your changelog about?`;
       } else if (node.type.name === 'heading') {
         return `Heading ${node.attrs.level}`;
       }
       return "Press '/' for commands or just start typing...";
     },
     includeChildren: true,
+    showOnlyCurrent: false,
   }),
   SlashCommand,
   TiptapUnderline,
@@ -140,4 +143,5 @@ export const defaultExtensions = [
   DragAndDrop,
   CustomDocument,
   TitleNode,
+  DescriptionNode,
 ];

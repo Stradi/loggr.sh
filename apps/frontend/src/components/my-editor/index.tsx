@@ -23,7 +23,12 @@ export default function MyEditor({
         content: [{ type: 'text', text: 'Title of my changelog' }],
       },
       {
+        type: 'description',
+        content: [{ type: 'text', text: 'Description of my changelog' }],
+      },
+      {
         type: 'paragraph',
+        content: [{ type: 'text', text: 'Some content' }],
       },
     ],
   },
