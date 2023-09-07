@@ -51,7 +51,7 @@ export default function MiniChangelog({ changelog }: Props) {
           <p className="text-sm text-neutral-500">{changelog.short_description}</p>
           <br />
           <div className="relative">
-            <p
+            <div
               dangerouslySetInnerHTML={{
                 __html: contentExcerpt,
               }}
