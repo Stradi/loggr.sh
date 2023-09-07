@@ -1,6 +1,6 @@
 'use client';
 
-import { Editor, EditorContent, useEditor } from '@tiptap/react';
+import { Editor, EditorContent, JSONContent, useEditor } from '@tiptap/react';
 import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { EditorBubbleMenu } from './bubble-menu';
@@ -11,10 +11,12 @@ type Props = {
   debounceDuration?: number;
   defaultValue?: any;
   editable?: boolean;
+
+  onSave?: ({ title, description, content }: { title: string; description: string; content: any }) => void;
 };
 
 export default function MyEditor({
-  debounceDuration = 1000,
+  debounceDuration = 250,
   defaultValue = {
     type: 'doc',
     content: [
@@ -33,12 +35,28 @@ export default function MyEditor({
     ],
   },
   editable = true,
+  onSave,
 }: Props) {
+  function callOnSave(editor: Editor) {
+    const json = editor.getJSON();
+
+    if ((json.content as JSONContent[]).length < 2) return;
+    const [titleNode, descriptionNode, ...restNodes] = json.content as JSONContent[];
+
+    onSave?.({
+      title: titleNode?.content?.[0].text as string,
+      description: descriptionNode?.content?.[0].text as string,
+      content: restNodes,
+    });
+  }
+
   const [content, setContent] = useState<any>(defaultValue);
 
   const debouncedOnChange = useDebouncedCallback(async ({ editor }: { editor: Editor }) => {
     const json = editor.getJSON();
     setContent(json);
+
+    callOnSave(editor);
   }, debounceDuration);
 
   const editor = useEditor({
@@ -58,7 +76,10 @@ export default function MyEditor({
     if (editor && content && !hydrated) {
       editor.commands.setContent(content);
       setHydrated(true);
+
+      callOnSave(editor);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor, content, hydrated]);
 
   return (

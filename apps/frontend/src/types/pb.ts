@@ -29,6 +29,7 @@ export type Changelog = Base & {
   content: any;
   featured_image: string;
   tags: ('FIX' | 'ANNOUNCEMENT' | 'COMING_SOON' | 'IMPROVEMENT')[];
+  is_published: boolean;
 
   expand?: {
     product?: Product;

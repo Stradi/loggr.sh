@@ -1,5 +1,9 @@
+'use client';
+
 import MyEditor from '@/components/my-editor';
+import { generateDocumentJSON } from '@/lib/utils/editor';
 import { Changelog } from '@/types/pb';
+import { useState } from 'react';
 import Sidebar from '../sidebar';
 
 type Props = {
@@ -8,6 +12,14 @@ type Props = {
 };
 
 export default function ViewChangelogPage({ changelog, isEditable = false }: Props) {
+  const [updatedChangelog, setUpdatedChangelog] = useState<Partial<Changelog>>(changelog);
+
+  const editorValue = generateDocumentJSON(
+    updatedChangelog.name as string,
+    updatedChangelog.short_description as string,
+    updatedChangelog.content as any[]
+  );
+
   return (
     <section>
       <div className="flex justify-between">
@@ -16,7 +28,7 @@ export default function ViewChangelogPage({ changelog, isEditable = false }: Pro
       </div>
       <div className="grid grid-cols-3 gap-2 h-full grow">
         <main className="col-span-2 border border-neutral-100 rounded-lg p-4 pl-8">
-          <MyEditor defaultValue={changelog.content} editable={isEditable} />
+          <MyEditor defaultValue={editorValue} editable={isEditable} />
         </main>
         <Sidebar />
       </div>
