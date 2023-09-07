@@ -41,13 +41,14 @@ export default function MiniChangelog({ changelog }: Props) {
         </header>
         <hr />
         <main>
-          <Link
-            as="h2"
-            href={`/dashboard/_/${changelog.expand?.product?.slug}/changelogs/${changelog.slug}/edit`}
-            className="text-xl font-medium hover:underline"
-          >
-            {changelog.name}
-          </Link>
+          <h2>
+            <Link
+              href={`/dashboard/_/${changelog.expand?.product?.slug}/changelogs/${changelog.slug}/edit`}
+              className="text-xl font-medium hover:underline"
+            >
+              {changelog.name}
+            </Link>
+          </h2>
           <p className="text-sm text-neutral-500">{changelog.short_description}</p>
           <br />
           <div className="relative">
