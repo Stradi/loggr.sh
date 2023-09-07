@@ -231,6 +231,7 @@ function CommandList({
 
   return items.length > 0 ? (
     <div
+      id="slash-command"
       ref={commandListContainer}
       className="z-50 h-auto max-h-[330px] w-72 overflow-y-auto rounded-md border border-neutral-200 bg-white px-1 py-2 shadow-md transition-all space-y-1"
     >
