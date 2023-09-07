@@ -40,7 +40,7 @@ export default async function Layout({ children, params: { productSlug } }: Prop
         }}
       >
         <DashboardNavigation />
-        <main className="p-4 max-w-3xl">{children}</main>
+        <main className="p-4">{children}</main>
       </SelectedProductProvider>
     </Container>
   );
