@@ -9,10 +9,13 @@ import { defaultEditorProps } from './props';
 
 type Props = {
   debounceDuration?: number;
+  defaultValue?: any;
+  editable?: boolean;
 };
 
-export default function MyEditor({ debounceDuration = 1000 }: Props) {
-  const [content, setContent] = useState<any>({
+export default function MyEditor({
+  debounceDuration = 1000,
+  defaultValue = {
     type: 'doc',
     content: [
       {
@@ -20,7 +23,10 @@ export default function MyEditor({ debounceDuration = 1000 }: Props) {
         content: [{ type: 'text', text: 'Title of my changelog' }],
       },
     ],
-  });
+  },
+  editable = true,
+}: Props) {
+  const [content, setContent] = useState<any>(defaultValue);
 
   const debouncedOnChange = useDebouncedCallback(async ({ editor }: { editor: Editor }) => {
     const json = editor.getJSON();
@@ -36,6 +42,7 @@ export default function MyEditor({ debounceDuration = 1000 }: Props) {
       debouncedOnChange(e as any);
     },
     autofocus: 'end',
+    editable,
   });
 
   const [hydrated, setHydrated] = useState(false);

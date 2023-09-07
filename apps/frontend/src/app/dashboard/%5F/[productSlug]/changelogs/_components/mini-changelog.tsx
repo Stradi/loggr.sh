@@ -7,8 +7,6 @@ import DeleteAlertDialog from './delete-alert-dialog';
 
 type Props = { changelog: Changelog };
 export default function MiniChangelog({ changelog }: Props) {
-  const contentExcerpt = changelog.content.split('\r\n').slice(0, 2).join('<br />');
-
   return (
     <Button asChild variant="outline" className="group p-4 block h-auto hover:bg-white">
       <article className="space-y-4">
@@ -30,7 +28,7 @@ export default function MiniChangelog({ changelog }: Props) {
               </Link>
             </Button>
             <Button asChild variant="ghost" size="icon" title="Edit this changelog">
-              <Link href={`/dashboard/_/${changelog.expand?.product?.slug}/changelogs/${changelog.slug}/edit`}>
+              <Link href={`/dashboard/_/${changelog.expand?.product?.slug}/changelogs/${changelog.slug}?edit=1`}>
                 <FileEditIcon size={16} />
               </Link>
             </Button>
@@ -52,7 +50,8 @@ export default function MiniChangelog({ changelog }: Props) {
           <div className="relative">
             <div
               dangerouslySetInnerHTML={{
-                __html: contentExcerpt,
+                // TODO: Actually render the changelog content here.
+                __html: JSON.stringify(changelog.content),
               }}
             />
             <div className="pointer-events-none absolute w-full h-full bottom-0 bg-gradient-to-t from-white to-transparent" />

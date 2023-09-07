@@ -26,7 +26,7 @@ export type Changelog = Base & {
   name: string;
   slug: string;
   short_description: string;
-  content: string;
+  content: any;
   featured_image: string;
   tags: ('FIX' | 'ANNOUNCEMENT' | 'COMING_SOON' | 'IMPROVEMENT')[];
 

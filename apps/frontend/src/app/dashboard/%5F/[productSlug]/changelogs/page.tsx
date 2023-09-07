@@ -1,7 +1,6 @@
-import { Button } from '@/components/ui/button';
 import createServerComponentClient from '@/lib/pocket-base/create-server-component-client';
 import { Changelog } from '@/types/pb';
-import Link from 'next/link';
+import CreateButton from './_components/create-button';
 import MiniChangelog from './_components/mini-changelog';
 
 async function fetchChangelogs(productSlug: string) {
@@ -32,9 +31,7 @@ export default async function Page({ params: { productSlug } }: Props) {
         <h1 className="text-xl font-medium">
           Changelogs (<span className="font-mono">{changelogs?.totalItems}</span>)
         </h1>
-        <Button asChild>
-          <Link href={`/dashboard/_/${productSlug}/changelogs/new`}>Create new Changelog</Link>
-        </Button>
+        <CreateButton />
       </header>
       <main>
         {changelogs?.items.map((changelog) => (
