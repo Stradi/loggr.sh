@@ -56,7 +56,7 @@ export default function MiniChangelog({ changelog }: Props) {
                 __html: contentExcerpt,
               }}
             />
-            <div className="absolute w-full h-full bottom-0 bg-gradient-to-t from-white to-transparent" />
+            <div className="pointer-events-none absolute w-full h-full bottom-0 bg-gradient-to-t from-white to-transparent" />
           </div>
         </main>
         <hr />
