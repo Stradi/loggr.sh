@@ -1,8 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { toReadableDate } from '@/lib/utils/date';
 import { Changelog } from '@/types/pb';
-import { ExternalLinkIcon, FileEditIcon, TrashIcon } from 'lucide-react';
+import { ExternalLinkIcon, FileEditIcon } from 'lucide-react';
 import Link from 'next/link';
+import DeleteAlertDialog from './delete-alert-dialog';
 
 type Props = { changelog: Changelog };
 export default function MiniChangelog({ changelog }: Props) {
@@ -33,9 +34,7 @@ export default function MiniChangelog({ changelog }: Props) {
                 <FileEditIcon size={16} />
               </Link>
             </Button>
-            <Button variant="ghost" size="icon" title="Delete this changelog">
-              <TrashIcon size={16} />
-            </Button>
+            <DeleteAlertDialog changelog={changelog} />
           </div>
         </header>
         <hr />
