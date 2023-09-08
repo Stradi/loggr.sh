@@ -69,6 +69,7 @@ export default function MyEditor({
     },
     autofocus: 'end',
     editable,
+    content,
   });
 
   // I don't know why that happens but when editable prop is changed from false to true,
