@@ -4,6 +4,7 @@ import EditChangelogPage from './_components/edit-changelog-page';
 import { EditChangelogActionBar } from './_components/edit-changelog-page/edit-changelog-action-bar';
 import NewChangelogPage from './_components/new-changelog-page';
 import { NewChangelogPageActionBar } from './_components/new-changelog-page/new-changelog-action-bar';
+import Sidebar from './_components/sidebar';
 import ViewChangelogPage from './_components/view-changelog-page';
 import { ViewChangelogPageActionBar } from './_components/view-changelog-page/view-changelog-action-bar';
 import { ChangelogProvider } from './_stores/changelog-store';
@@ -59,17 +60,27 @@ export default async function Page(props: Props) {
   );
 
   return (
-    <main>
+    <main className="space-y-2">
       <ChangelogProvider changelog={changelog || newChangelogData}>
         <div className="flex gap-2 [&>*]:w-fit justify-end">{actionBarToRender}</div>
         {changelog ? (
           isEditable ? (
-            <EditChangelogPage defaultChangelog={changelog} />
+            <div className="grid grid-cols-3 gap-2">
+              <div className="col-span-2">
+                <EditChangelogPage defaultChangelog={changelog} />
+              </div>
+              <Sidebar />
+            </div>
           ) : (
             <ViewChangelogPage defaultChangelog={changelog} />
           )
         ) : (
-          <NewChangelogPage defaultChangelog={newChangelogData} />
+          <div className="grid grid-cols-3 gap-2">
+            <div className="col-span-2">
+              <NewChangelogPage defaultChangelog={newChangelogData} />
+            </div>
+            <Sidebar />
+          </div>
         )}
       </ChangelogProvider>
     </main>
