@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Changelog } from '@/types/pb';
+import { useRouter } from 'next/navigation';
 import { useChangelogContext } from '../../_stores/changelog-store';
 
 export default function PublishButton() {
@@ -11,6 +12,8 @@ export default function PublishButton() {
     state.setChangelog,
     state.saveChangelogToDatabase,
   ]);
+
+  const router = useRouter();
 
   return (
     <Button
@@ -23,6 +26,7 @@ export default function PublishButton() {
         } as Changelog);
 
         saveChangelogToDatabase();
+        router.refresh();
       }}
     >
       {changelog?.is_published ? 'Unpublish' : 'Publish'}

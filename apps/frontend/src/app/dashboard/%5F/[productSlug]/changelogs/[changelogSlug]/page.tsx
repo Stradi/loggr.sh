@@ -62,7 +62,20 @@ export default async function Page(props: Props) {
   return (
     <main className="space-y-2">
       <ChangelogProvider changelog={changelog || newChangelogData}>
-        <div className="flex gap-2 [&>*]:w-fit justify-end">{actionBarToRender}</div>
+        <div className="flex justify-between items-center">
+          <div className="text-sm">
+            {changelog?.is_published ? (
+              <span>
+                This changelog is <strong>published</strong> and can be viewed by all of your users.
+              </span>
+            ) : (
+              <span>
+                This changelog is <strong>not published</strong> and only you can view it.
+              </span>
+            )}
+          </div>
+          <div className="space-x-1">{actionBarToRender}</div>
+        </div>
         {changelog ? (
           isEditable ? (
             <div className="grid grid-cols-3 gap-2">
