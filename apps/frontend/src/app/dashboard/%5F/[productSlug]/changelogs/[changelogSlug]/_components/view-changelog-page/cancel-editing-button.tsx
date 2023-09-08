@@ -9,7 +9,7 @@ type Props = {
 export default function CancelEditingButton({ changelog }: Props) {
   return (
     <Button asChild variant="ghost">
-      <Link href={`/dashboard/_/${changelog.expand?.product?.slug}/changelogs/${changelog.slug}`}>Cancel editing</Link>
+      <Link href={`/dashboard/_/${changelog.expand?.product?.slug}/changelogs/${changelog.slug}`}>Exit edit mode</Link>
     </Button>
   );
 }

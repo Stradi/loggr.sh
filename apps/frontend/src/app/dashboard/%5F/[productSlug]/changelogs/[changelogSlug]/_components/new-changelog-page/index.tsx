@@ -20,11 +20,7 @@ export default function NewChangelogPage() {
     .map((word) => word[0].toUpperCase() + word.slice(1))
     .join(' ');
 
-  const editorValue = generateDocumentJSON(
-    `${titleCasedSlug}'s first changelog 🥳🎉`,
-    `${titleCasedSlug} has a new changelog!`,
-    []
-  );
+  const editorValue = generateDocumentJSON(`${titleCasedSlug}`, `${titleCasedSlug} has a new changelog! 🥳🎉`, []);
 
   return (
     <section>
