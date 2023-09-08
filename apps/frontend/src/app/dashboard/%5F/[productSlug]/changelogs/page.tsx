@@ -11,6 +11,7 @@ async function fetchChangelogs(productSlug: string) {
     .getList<Changelog>(0, 10, {
       filter: `product.slug = "${productSlug}" && product.admin_user.id = "${pb.authStore.model?.id}"`,
       expand: 'product',
+      sort: '-created',
     })
     .catch(() => null);
 
@@ -27,13 +28,13 @@ export default async function Page({ params: { productSlug } }: Props) {
 
   return (
     <section className="space-y-4">
-      <header className="flex justify-between">
+      <header className="flex justify-between items-center">
         <h1 className="text-xl font-medium">
           Changelogs (<span className="font-mono">{changelogs?.totalItems}</span>)
         </h1>
         <CreateButton />
       </header>
-      <main>
+      <main className="space-y-2 max-w-4xl">
         {changelogs?.items.map((changelog) => (
           <MiniChangelog key={changelog.id} changelog={changelog} />
         ))}
