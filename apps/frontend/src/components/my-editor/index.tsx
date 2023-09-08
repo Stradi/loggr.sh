@@ -71,6 +71,13 @@ export default function MyEditor({
     editable,
   });
 
+  // I don't know why that happens but when editable prop is changed from false to true,
+  // editor.isEditable is not updating accordingly. So we are just using an effect to sync
+  // editable prop to editor.isEditable.
+  useEffect(() => {
+    editor?.setEditable(editable);
+  }, [editor, editable]);
+
   const [hydrated, setHydrated] = useState(false);
   useEffect(() => {
     if (editor && content && !hydrated) {
