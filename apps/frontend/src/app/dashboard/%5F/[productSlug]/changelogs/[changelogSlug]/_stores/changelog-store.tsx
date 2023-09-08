@@ -1,7 +1,6 @@
 'use client';
 
 import createClientComponentClient from '@/lib/pocket-base/create-client-component-client';
-import { deepCompare } from '@/lib/utils';
 import { Changelog } from '@/types/pb';
 import { PropsWithChildren, createContext, useContext, useRef } from 'react';
 import { createStore, useStore } from 'zustand';
@@ -10,7 +9,7 @@ type ChangelogStore = {
   changelog: Changelog | null;
   isSaving: boolean;
 
-  saveChangelogToDatabase: (newChangelog: Changelog) => Promise<void>;
+  saveChangelogToDatabase: () => Promise<void>;
   setChangelog: (newChangelog: Changelog) => void;
 };
 
@@ -25,23 +24,17 @@ const DefaultProps: ChangelogStore = {
 function createChangelogStore(initProps?: Partial<ChangelogStore>) {
   return createStore<ChangelogStore>()((set, get) => ({
     ...DefaultProps,
-    saveChangelogToDatabase: async (newChangelog) => {
+    saveChangelogToDatabase: async () => {
       set({ isSaving: true });
 
-      const oldChangelog = get().changelog;
-      if (!oldChangelog) {
-        set({ isSaving: false });
-        return;
-      }
-
-      const hasDifference = !deepCompare(oldChangelog, newChangelog);
-      if (!hasDifference) {
+      const changelog = get().changelog;
+      if (!changelog) {
         set({ isSaving: false });
         return;
       }
 
       const pb = await createClientComponentClient();
-      const record = await pb.collection('changelogs').update<Changelog>(oldChangelog.id, newChangelog, {
+      const record = await pb.collection('changelogs').update<Changelog>(changelog.id, changelog, {
         expand: 'product',
       });
 
