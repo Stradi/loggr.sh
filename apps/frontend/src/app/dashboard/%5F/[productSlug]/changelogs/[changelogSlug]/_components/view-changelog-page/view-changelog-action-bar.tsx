@@ -3,7 +3,6 @@ import { Changelog } from '@/types/pb';
 import Link from 'next/link';
 
 type Props = { defaultChangelog: Changelog };
-
 export function ViewChangelogPageActionBar({ defaultChangelog }: Props) {
   return (
     <Button asChild>
