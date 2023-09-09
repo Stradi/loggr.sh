@@ -26,6 +26,7 @@
     "@radix-ui/react-select": "^1.2.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "^1.0.3",
+    "@tanstack/react-table": "^8.9.7",
     "@tiptap/extension-color": "^2.1.8",
     "@tiptap/extension-document": "^2.1.8",
     "@tiptap/extension-heading": "^2.1.8",

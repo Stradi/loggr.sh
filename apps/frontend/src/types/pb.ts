@@ -28,7 +28,7 @@ export type Changelog = Base & {
   short_description: string;
   content: any;
   featured_image: string | undefined;
-  tags: 'FIX' | 'ANNOUNCEMENT' | 'COMING_SOON' | 'IMPROVEMENT';
+  tags: 'UNCATEGORIZED' | 'FIX' | 'ANNOUNCEMENT' | 'COMING_SOON' | 'IMPROVEMENT';
   is_published: boolean;
 
   expand?: {

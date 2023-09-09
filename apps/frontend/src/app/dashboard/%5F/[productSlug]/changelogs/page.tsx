@@ -1,7 +1,8 @@
 import createServerComponentClient from '@/lib/pocket-base/create-server-component-client';
 import { Changelog } from '@/types/pb';
 import CreateButton from './_components/create-button';
-import MiniChangelog from './_components/mini-changelog';
+import { columns } from './_components/table/columns';
+import DataTable from './_components/table/data-table';
 
 async function fetchChangelogs(productSlug: string) {
   const pb = await createServerComponentClient();
@@ -34,10 +35,8 @@ export default async function Page({ params: { productSlug } }: Props) {
         </h1>
         <CreateButton />
       </header>
-      <main className="space-y-2 max-w-4xl">
-        {changelogs?.items.map((changelog) => (
-          <MiniChangelog key={changelog.id} changelog={changelog} />
-        ))}
+      <main>
+        <DataTable columns={columns} data={changelogs?.items as Changelog[]} />
       </main>
     </section>
   );
