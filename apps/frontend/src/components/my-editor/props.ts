@@ -3,7 +3,7 @@ import { EditorProps } from '@tiptap/pm/view';
 
 export const defaultEditorProps: EditorProps = {
   attributes: {
-    class: 'prose prose-sm prose-neutral focus-visible:outline-none',
+    class: 'prose prose-sm max-w-full prose-neutral focus-visible:outline-none',
   },
   handleDOMEvents: {
     keydown: (_view, event) => {

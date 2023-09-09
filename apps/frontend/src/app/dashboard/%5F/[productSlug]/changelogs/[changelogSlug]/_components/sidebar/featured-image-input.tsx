@@ -12,7 +12,7 @@ export default function FeaturedImageInput() {
   const [changelog, uploadFeaturedImage] = useChangelogContext((state) => [state.changelog, state.uploadFeaturedImage]);
   const pb = usePocketBase();
 
-  const hasFeaturedImage = changelog?.featured_image !== undefined;
+  const hasFeaturedImage = changelog?.featured_image !== undefined && changelog?.featured_image !== '';
   const featuredImageURL = hasFeaturedImage
     ? pb?.files.getUrl(changelog as Changelog, changelog?.featured_image as string)
     : 'https://placehold.co/640x360?text=No+Image';
@@ -22,6 +22,7 @@ export default function FeaturedImageInput() {
       <div>
         <Label htmlFor="featured-image">Featured Image</Label>
         <Input
+          className="col-span-2"
           type="file"
           accept="image/png,image/jpeg"
           onChange={async (e) => {

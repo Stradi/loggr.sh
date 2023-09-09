@@ -19,6 +19,8 @@ export default function SaveChangesButton() {
       disabled={isSaving}
       onClick={async () => {
         const newChangelog = await saveChangelogToDatabase();
+        if (!newChangelog) return;
+
         router.replace(`/dashboard/_/${newChangelog?.expand?.product?.slug}/changelogs/${newChangelog?.slug}?edit=1`);
       }}
     >
