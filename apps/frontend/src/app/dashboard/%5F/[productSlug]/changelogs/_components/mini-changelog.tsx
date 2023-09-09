@@ -12,11 +12,12 @@ export default function MiniChangelog({ changelog }: Props) {
       <article className="space-y-4">
         <header className="flex justify-between items-center">
           <div className="space-x-2">
-            {changelog.tags.map((tag) => (
-              <span key={tag} className="px-2 py-1 rounded-full bg-neutral-200 text-xs uppercase font-medium">
-                {tag}
-              </span>
-            ))}
+            <span className="px-2 py-1 rounded-full bg-neutral-200 text-xs uppercase font-medium">
+              {changelog.is_published ? 'Published' : 'Draft'}
+            </span>
+            <span className="px-2 py-1 rounded-full bg-neutral-200 text-xs uppercase font-medium">
+              {changelog.tags}
+            </span>
             <span className="text-sm text-neutral-500">{toReadableDate(changelog.created)}</span>
           </div>
           {/* TODO: Some of these buttons are not links. For example delete button should open a alert dialog. */}

@@ -13,13 +13,14 @@ export function NewChangelogPageActionBar({ defaultChangelog }: Props) {
   const router = useRouter();
 
   const selectedProduct = useSelectedProduct();
-  const [changelog, setChangelog] = useChangelogContext((state) => [state.changelog, state.setChangelog]);
+  const [changelog, forceSetChangelog] = useChangelogContext((state) => [state.changelog, state.forceSetChangelog]);
 
   async function onClick() {
     const record = await pb?.collection('changelogs').create<Changelog>(
       {
         ...changelog,
         is_published: false,
+        tags: 'UNCATEGORIZED',
         product: selectedProduct.product?.id,
       },
       {
@@ -29,8 +30,8 @@ export function NewChangelogPageActionBar({ defaultChangelog }: Props) {
 
     if (!record) return;
 
-    setChangelog(record);
-    router.push(`/dashboard/_/${record.expand?.product?.slug}/changelogs/${record.slug}?edit=1`);
+    forceSetChangelog(record);
+    router.replace(`/dashboard/_/${record.expand?.product?.slug}/changelogs/${record.slug}?edit=1`);
   }
 
   return <Button onClick={onClick}>Save as draft</Button>;

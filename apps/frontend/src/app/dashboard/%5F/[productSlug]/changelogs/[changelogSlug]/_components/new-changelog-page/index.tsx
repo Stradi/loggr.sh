@@ -14,14 +14,14 @@ export default function NewChangelogPage({ defaultChangelog }: Props) {
     defaultChangelog.content
   );
 
-  const setChangelog = useChangelogContext((state) => state.setChangelog);
+  const forceSetChangelog = useChangelogContext((state) => state.forceSetChangelog);
 
   return (
     <MyEditor
       editable={true}
       defaultValue={defaultEditorValue}
       onSave={(data) => {
-        setChangelog({
+        forceSetChangelog({
           ...defaultChangelog,
           name: data.title,
           short_description: data.description,
